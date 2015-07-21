@@ -1,0 +1,21 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "tsd reinstall && tsd link",
+    "test": "mocha --reporter spec -r reflect-metadata ./target/test/ts",
+    "clean": "rimraf target",
+    "build": "cd src && tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "reflect-metadata": "https://github.com/cybrown/ReflectDecorators/archive/master.tar.gz",
+    "rimraf": "^2.4.2",
+    "sinon": "^1.15.4",
+    "typescript": "^1.5.3"
+  }
+}
