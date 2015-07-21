@@ -1,19 +1,25 @@
 {
-  "name": "ts",
-  "version": "1.0.0",
+  "name": "persist",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "typescript": {
+    "definition": "target/persist.d.ts"
+  },
   "scripts": {
-    "postinstall": "tsd reinstall && tsd link",
     "test": "mocha --reporter spec -r reflect-metadata ./target/test/ts",
     "clean": "rimraf target",
-    "build": "cd src && tsc"
+    "watch": "cd src && tsc --watch",
+    "build": "tsd reinstall && tsd link && npm run clean && cd src && tsc -d && cd .. && dts-generator --baseDir ./target/main/ts --out target/persist.d.ts -name persist --main persist/persist persist.d.ts"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "https://github.com/cybrown/ReflectDecorators/archive/master.tar.gz"
+  },
   "devDependencies": {
+    "dts-generator": "^1.5.0",
     "mocha": "^2.2.5",
-    "reflect-metadata": "https://github.com/cybrown/ReflectDecorators/archive/master.tar.gz",
     "rimraf": "^2.4.2",
     "sinon": "^1.15.4",
     "typescript": "^1.5.3"
